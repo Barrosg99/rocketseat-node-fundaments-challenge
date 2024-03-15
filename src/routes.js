@@ -24,6 +24,11 @@ export const routes = [
     handler: (req, res) => {
       const { title, description } = req.body;
 
+      if (!title || !description)
+        return res
+          .writeHead(400)
+          .end(JSON.stringify({ error: "Missing field or description" }));
+
       const task = {
         id: randomUUID(),
         title,
@@ -44,6 +49,11 @@ export const routes = [
     handler: (req, res) => {
       const { id } = req.params;
       const { body } = req;
+
+      if (!Object.entries(body).length)
+        return res
+          .writeHead(400)
+          .end(JSON.stringify({ error: "Missing field and description" }));
 
       const hasUpdated = database.update("tasks", id, body);
 

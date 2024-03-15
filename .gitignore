@@ -1,4 +1,4 @@
 node_modules
 db.json
-streams/*
+learn-streams
 .vscode

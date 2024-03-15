@@ -72,8 +72,7 @@ export class Database {
       return false;
     } else {
       const isCompleted = !!this.#database[table][index]["completed_at"];
-      if (isCompleted)
-        this.#database[table][index]["completed_at"] = null
+      if (isCompleted) this.#database[table][index]["completed_at"] = null;
       else this.#database[table][index]["completed_at"] = new Date();
       this.#persist();
       return true;
